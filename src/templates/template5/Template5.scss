@@ -1,0 +1,113 @@
+.template5-cntr {
+  height: 100%;
+  border: 0;
+  padding: 2em;
+
+  .product-image-card {
+    overflow: hidden;
+    position: relative;
+    // border-bottom-right-radius: 25px;
+    // border-bottom-left-radius: 25px;
+
+    img.product-image {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  .product-name {
+    font-family: Pacifico;
+    font-style: normal;
+    // font-weight: bold;
+    font-size: 1.9em;
+    color: white;
+    text-align: center;
+    text-shadow: -5px 5px 15px #000000;
+    width: 100%;
+  }
+
+  .product-price {
+    font-family: Pacifico;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #ffffff;
+    min-width: 95px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .product-desc {
+    font-family: Montserrat;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: break-spaces;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  .store-name {
+    font-family: Montserrat;
+    // font-style: italic;
+    font-weight: bold;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: left;
+  }
+
+  .whatsapp-number {
+    font-family: Montserrat;
+    // font-style: italic;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    text-align: left;
+  }
+
+  .product-image-backdrop {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .name-price-ctnr {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 0 1em;
+  }
+
+  .main-card {
+    height: 100%;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .order-now {
+    font-size: 1.4em;
+    font-family: Pacifico;
+    text-transform: lowercase;
+    // font-weight: bold;
+    font-style: normal;
+    color: rgb(126, 124, 124);
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "whatsapp-ad-maker",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "dom-to-image": "^2.6.0",
+    "env-cmd": "^10.1.0",
+    "firebase": "^8.6.8",
+    "formik": "^2.2.9",
+    "i": "^0.3.6",
+    "node-sass": "^4.14.1",
+    "react": "^17.0.2",
+    "react-color": "^2.19.3",
+    "react-country-flag-currency-picker": "^1.0.2",
+    "react-dom": "^17.0.2",
+    "react-responsive-carousel": "^3.2.18",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-select-currency": "^1.0.7",
+    "react-swipeable": "^6.1.2",
+    "react-tabs": "^3.2.2",
+    "unsplash-js": "^7.0.11",
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.9"
+  },
+  "scripts": {
+    "start-dev": "env-cmd -f .env.dev react-scripts start",
+    "build-dev": "env-cmd -f .env.dev react-scripts build",
+    "start-prod": "env-cmd -f .env.prod react-scripts start",
+    "build-prod": "env-cmd -f .env.prod react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

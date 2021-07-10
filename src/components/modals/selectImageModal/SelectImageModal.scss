@@ -1,0 +1,61 @@
+@media (max-width: 476px) {
+  .select-image-modal-ctrn {
+    .modal-dialog {
+      margin: 0;
+    }
+  }
+}
+
+.select-image-modal-ctrn {
+  .modal-header {
+    border: 0;
+  }
+
+  .modal-content {
+    background-color: white;
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    padding: 0;
+    overflow-y: scroll;
+  }
+
+  h5 {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: "Roboto";
+  }
+
+  input.search-input {
+    padding: 13px 20px;
+  }
+
+  .search-btn {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background-image: url("../../../assets/images/searchBtn.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 0;
+    background-position: 50%;
+    background-color: transparent;
+  }
+
+  .load-more-btn {
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(196, 196, 196, 0.5);
+    width: 40%;
+    font-size: 0.8rem;
+  }
+
+  .btn-ctrn{
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+  }
+}

@@ -1,0 +1,112 @@
+.template2-ctrn {
+  height: 100%;
+  background-color: white;
+
+  .top-part {
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    flex: 0.9;
+
+    .product-image {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%;
+      border: 2px solid white;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0;
+      right: 0;
+    }
+  }
+
+  .img-box-ctrn {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .bottom-part {
+    flex: 0.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-price {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.1em;
+    border: 3px solid rgba(0, 0, 0, 0.25);
+
+    color: rgba(0, 0, 0, 0.56);
+    position: absolute;
+    top: -25px;
+    width: 60%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: white;
+  }
+
+  .product-description {
+    font-family: Cinzel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.85em;
+    // line-height: 17px;
+    white-space: break-spaces;
+    // overflow: hidden;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+  }
+
+  .product-name {
+    font-family: Cinzel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5em;
+
+    color: rgba(0, 0, 0, 0.56);
+  }
+  .order-now {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 18px;
+
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .seller-name {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 18px;
+
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .whatsapp-number {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.2em;
+    line-height: 26px;
+    /* identical to box height */
+
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .seller-info-ctrn {
+    background: rgba(22, 19, 139, 0.12);
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+  }
+}

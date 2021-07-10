@@ -1,0 +1,22 @@
+{
+  "screen_view": {
+    "title": "screen_view",
+    "params": { 
+        "screen_name": "screen_name" 
+    },
+    "description": "To track how many times a react route was hit"
+  },
+  "form_submit_successfully": {
+    "title": "form_submit_successfully",
+    "params": {},
+    "description": "To track how many times a form was submitted on Create Ad page."
+  },
+  "template_downloaded": {
+    "title": "template_downloaded",
+    "params": {
+      "template_id": "template_id",
+      "template_color": "template_color"
+    },
+    "description": "To track how many times the tempates are downloaded with which template id and color. Gives idea of which template and color users like the most."
+  }
+}

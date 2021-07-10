@@ -1,0 +1,116 @@
+.temp4-ctnr {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:50%;
+
+  .product-price {
+    // font-family: Parisienne;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.4em;
+    max-width: 50%;
+    color: #ffffff;
+    display: inline-block;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .product-name {
+    font-family: Parisienne;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.9em;
+    // line-height: 47px;
+    text-align: left;
+    color: rgba(256, 256, 256, 1);
+    
+    display: inline-block;
+    // background: radial-gradient(63.71% 45.45% at 50.13% 54.55%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.252) 54.69%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  .product-desc {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.2em;
+    white-space: break-spaces;
+    color: rgba(256, 256, 256, 0.9);
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .order-now {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .seller-name {
+    // font-family: Parisienne;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1em;
+    width: 100%;
+    color: #ffffff;
+  }
+
+  .whatsapp-number {
+    // font-family: Parisienne;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.2em;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .content-ctrn {
+    // background: linear-gradient(233.12deg, #CF2F2F 33.2%, #7d5017 75.65%); 
+    width: 599px;
+    height: 335px;
+    position: absolute;
+    bottom: -140px;
+    right: -25px;
+    transform: rotate(18deg);
+  }
+
+  .bottom-ctrn {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .seller-info-ctrn {
+    max-width: 50%;
+  }
+
+  .price-ctrn {
+    background: linear-gradient(253.04deg, #CF2F2F 29.52%, #910F64 80.98%);
+    width: 475px;
+    height: 150px;
+    position: absolute;
+    top: -120px;
+    right: -48px;
+    transform: rotate(18deg);
+  }
+
+  .top-part {
+    transform: rotate(18deg);
+  }
+
+  .price-order {
+    width: 300px;
+    position: absolute;
+    right: -33px;
+    top: 0px;
+  }
+}

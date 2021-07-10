@@ -1,0 +1,10 @@
+.image-grid-ctnr{
+    display: inline-block;
+    img{
+        float: left;
+        width: 33.33%;
+        height: 120px;
+        object-fit: cover;
+        padding: 1px;
+    }
+}

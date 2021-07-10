@@ -1,0 +1,176 @@
+.createAd {
+  font-family: "Roboto";
+
+  .product-image-card {
+    position: relative;
+    
+
+    
+    overflow: hidden;
+
+    .blank-image {
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f7f3f3;;
+      border-radius: 25px;
+
+      button{
+        width: 70%;
+      }
+    }
+
+    .selected-image {
+      height: 300px;
+      border-radius: 25px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .product-name-card {
+    .product-name {
+      flex: 0.7;
+    }
+
+    .product-price {
+      flex: 0.3;
+    }
+  }
+
+  .change-image {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .contact-link {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    color: white;
+    text-decoration: underline;
+  }
+
+  label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.9rem;
+    line-height: 21px;
+    /* identical to box height */
+
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .fields-ctnr {
+    padding: 0 0.8rem;
+  }
+
+  .react-autosuggest__container {
+    margin-right: 5px;
+    input {
+      width: 100%;
+    }
+  }
+
+  .next-btn {
+    height: 70px;
+    width: 70px;
+
+    background: url("/assets/images/nextBtn.svg") 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0;
+  }
+
+  .next-btn.shake-this {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .reset-btn {
+    height: 70px;
+    width: 70px;
+    right: 10px;
+    bottom: 80px;
+    z-index: 2;
+    background: url("/assets/images/resetBtn.svg") 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0;
+  }
+
+  .fadeOut {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+  }
+  .fadeIn {
+    opacity: 1;
+    transition: width 0.5s, height 0.5s, opacity 0.5s 0s;
+  }
+
+  .btns-ctnr {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-3px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(4px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-6px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  .optional-text {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+    font-size: 0.85rem;
+ } 
+ 
+ .optional-text span { 
+     background:#fff; 
+     padding:0 10px; 
+     color: rgba(0, 0, 0, 0.4);
+ }
+
+ .close{
+  flex: 0 1 auto;
+  margin-left: auto;
+ }
+}

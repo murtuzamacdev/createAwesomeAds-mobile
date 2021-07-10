@@ -1,0 +1,31 @@
+@media (max-width: 476px) {
+  .select-color-modal-ctrn {
+    .modal-dialog {
+      margin: 0;
+    }
+  }
+}
+
+.select-color-modal-ctrn {
+  .modal-header {
+    border: 0;
+  }
+
+  .modal-content {
+    background-color: white;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    padding: 0;
+    overflow-y: scroll;
+  }
+
+  .swatches-picker {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

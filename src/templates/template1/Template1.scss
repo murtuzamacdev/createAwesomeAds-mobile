@@ -1,0 +1,98 @@
+.temp1-ctnr {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+
+  .product-price {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.7em;
+    // line-height: 47px;
+    color: #ffffff;
+    background-color: #5a5a5a;
+    display: inline-block;
+  }
+
+  .product-name {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.7em;
+    background-color: #5a5a5a;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .with-absolute {
+    // position: absolute;
+    margin: auto;
+    text-align: center;
+    top: -60px;
+    left: 15%;
+    width: 70%;
+  }
+
+  .only-product-name {
+    width: 100%;
+  }
+
+  .product-desc {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.3em;
+    white-space: break-spaces;
+    color: #ffffff;
+    overflow: hidden;
+  }
+
+  .order-now {
+    font-family: Oswald;
+    font-weight: bold;
+    font-size: 100%;
+    background-color: #ffffff;
+    color: rgba(6, 6, 6, 0.6);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .seller-name {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2em;
+    line-height: 22px;
+    width: 100%;
+    color: #ffffff;
+  }
+
+  .whatsapp-number {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.2em;
+    line-height: 31px;
+    color: #ffffff;
+  }
+
+  .purple-ctnr {
+    width: 80%;
+    margin: auto;
+  }
+
+  .bottom-ctrn {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .seller-info-ctrn {
+    // max-width: 50%;
+  }
+}
