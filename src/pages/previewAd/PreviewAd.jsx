@@ -55,20 +55,6 @@ const PreviewAd = () => {
 
     useEffect(() => {
 
-        // Closing Modal when back button is clicked instead of routing to back page
-        window.onpopstate = e => {
-            e.preventDefault();
-            if (window.$('#templateSelectionModal').hasClass('show')) {
-                window.$('#templateSelectionModal').modal('hide');
-                history.goForward();
-            }
-
-            if (window.$('#selectColorModal').hasClass('show')) {
-                window.$('#selectColorModal').modal('hide');
-                history.goForward();
-            }
-        }
-
         // if no context, send to create page
         if (!globalContext.productData) {
             history.push('/');

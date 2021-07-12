@@ -45,15 +45,6 @@ const CreateAd = () => {
         }
         setSafeToShowForm(true);
 
-        // Closing Modal when back button is clicked instead of routing to back page
-        window.onpopstate = e => {
-            e.preventDefault();
-            if (window.$('#selectImageModal').hasClass('show')) {
-                window.$('#selectImageModal').modal('hide');
-                history.goForward();
-            }
-        }
-
         setTimeout(() => {
             setShowControls(true);
         }, 200);

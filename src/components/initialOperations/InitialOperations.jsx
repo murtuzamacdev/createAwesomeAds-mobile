@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
+import { App } from '@capacitor/app';
 
 const InitialOperations = () => {
     const history = useHistory();
@@ -15,18 +16,32 @@ const InitialOperations = () => {
 
             // Listen to route change event and do stuff...
             history.listen(() => {
-                firebase.analytics().logEvent(GAEvents.screen_view.title, { 
-                    [GAEvents.screen_view.params.screen_name]: window.location.pathname 
+                firebase.analytics().logEvent(GAEvents.screen_view.title, {
+                    [GAEvents.screen_view.params.screen_name]: window.location.pathname
                 });
             });
         }
         _initFirebase();
 
+        App.addListener('backButton', data => {
+            // Check if any modal is opened
+            let modalElement = window.$('.modal.show');
+            if (modalElement.get().length !== 0) {
+                modalElement.modal('hide');
+            } else {
+                if (history.location.pathname === '/') { // Exit app is on landing page
+                    App.exitApp();
+                } else { // Go back if not on landing page
+                    history.goBack();
+                }
+            }
+        });
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const initFirebase = () => {
-        var firebaseConfig = { 
+        var firebaseConfig = {
             apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
             authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
             databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
