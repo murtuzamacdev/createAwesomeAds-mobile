@@ -8,10 +8,9 @@ import { createApi } from 'unsplash-js';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
-import { isSafari, changeColorTone, hexToRgbA, lightOrDark, getOS } from '../../utility';
+import { changeColorTone, hexToRgbA, lightOrDark, getOS } from '../../utility';
 import { useSwipeable } from 'react-swipeable';
-import { Filesystem, Directory, Encoding, FilesystemDirectory } from '@capacitor/filesystem';
-import { Share } from '@capacitor/share';
+import { Filesystem, FilesystemDirectory } from '@capacitor/filesystem';
 
 
 //assets
@@ -209,7 +208,6 @@ const PreviewAd = () => {
             // appPackageName: 'com.apple.social.facebook', // Android only, you can provide id of the App you want to share with
             iPadCoordinates: '0,0,0,0' //IOS only iPadCoordinates for where the popover should be point.  Format with x,y,width,height
         };
-        window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
 
         var onSuccess = function (result) {
             console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
@@ -219,6 +217,8 @@ const PreviewAd = () => {
         var onError = function (msg) {
             alert("Sharing failed with message: " + msg);
         };
+
+        window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
     }
 
     const goToCreateAd = () => {
