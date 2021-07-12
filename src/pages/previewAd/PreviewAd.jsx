@@ -136,32 +136,30 @@ const PreviewAd = () => {
                         domtoimage.toPng(node, param)
                             .then(function (dataUrlInner) {
                                 downloadFile(dataUrlInner, (downloadResult) => {
-                                    setLoading(false);
-                                    setShowWatermark(false);
-                                    if (downloadResult === 'ERROR') {
-                                        alert('Downloading Failed. Please try again.')
-                                    } else {
-                                        shareFile(downloadResult);
-                                    }
+                                    handleDownloadResult(downloadResult);
                                 });
                             });
                     }, 2000);
                 } else {
-                    downloadFile(dataUrl, function callback(downloadResult) {
-                        setLoading(false);
-                        setShowWatermark(false);
-                        if (downloadResult.status === 'ERROR') {
-                            alert(downloadResult.data);
-                            var permissions = window.cordova.plugins.permissions;
-                            window.cordova.plugins.permissions.requestPermission(permissions.WRITE_EXTERNAL_STORAGE, successCallback, errorCallback);
-                            const successCallback = (status) => { }
-                            const errorCallback = () => { }
-                        } else {
-                            shareFile(downloadResult.data);
-                        }
+                    downloadFile(dataUrl, (downloadResult) => {
+                        handleDownloadResult(downloadResult);
                     });
                 }
             });
+    }
+
+    const handleDownloadResult = (downloadResult) => {
+        setLoading(false);
+        setShowWatermark(false);
+        if (downloadResult.status === 'ERROR') {
+            alert(downloadResult.data);
+            if (getOS() === 'Android') {
+                var permissions = window.cordova.plugins.permissions;
+                window.cordova.plugins.permissions.requestPermission(permissions.WRITE_EXTERNAL_STORAGE, () => { }, () => { });
+            }
+        } else {
+            shareFile(downloadResult.data);
+        }
     }
 
     const downloadFile = async (dataUrl, callback) => {
