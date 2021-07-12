@@ -150,10 +150,10 @@ const PreviewAd = () => {
                     downloadFile(dataUrl, (downloadResult) => {
                         setLoading(false);
                         setShowWatermark(false);
-                        if (downloadResult === 'ERROR') {
-                            alert('Downloading Failed. Please try again.')
+                        if (downloadResult.status === 'ERROR') {
+                            alert(downloadResult.data);
                         } else {
-                            shareFile(downloadResult);
+                            shareFile(downloadResult.data);
                         }
                     });
                 }
@@ -168,10 +168,10 @@ const PreviewAd = () => {
                 data: dataUrl,
                 directory: FilesystemDirectory.Documents
             });
-            console.log('savedFile.uri :>> ', savedFile.uri);
-            return callback(savedFile.uri);
+            return callback({status: 'SUCCESS', data: savedFile.uri});
         } catch (e) {
-            return 'ERROR'
+            console.log('download error :>> ', e);
+            callback({status: 'ERROR', data: e});
         }
         // if (downloadedFileName !== null) {
         //     let downloadedFile = await Filesystem.getUri({
