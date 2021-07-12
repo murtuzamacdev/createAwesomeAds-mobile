@@ -1,0 +1,7 @@
+{
+    "name": "createawesomeads",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }
