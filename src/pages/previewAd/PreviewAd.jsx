@@ -8,7 +8,7 @@ import { createApi } from 'unsplash-js';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
-import { isSafari, changeColorTone, hexToRgbA, lightOrDark } from '../../utility';
+import { isSafari, changeColorTone, hexToRgbA, lightOrDark, getOS } from '../../utility';
 import { useSwipeable } from 'react-swipeable';
 import { Filesystem, Directory, Encoding, FilesystemDirectory } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
@@ -36,6 +36,7 @@ const PreviewAd = () => {
     const [showWatermark, setShowWatermark] = useState(false);
     const [showControls, setShowControls] = useState(false);
     const [canvasHeight, setcanvasHeight] = useState(AVAILALBE_SIZES[globalContext.selectedSize].calculateCanvasHieghtFunc());
+
     let history = useHistory();
     const unsplash = createApi({
         accessKey: UNSPLASH_API_KEY
@@ -142,130 +143,83 @@ const PreviewAd = () => {
 
         domtoimage.toPng(node, param)
             .then(function (dataUrl) {
-                if (isSafari()) {
+
+
+                if (getOS() === 'iOS') {
                     // Need to call domtoimage again due to Safari issue
                     setTimeout(() => {
                         domtoimage.toPng(node, param)
                             .then(function (dataUrlInner) {
-                                // simulateDownload(dataUrlInner);
-                                writeSecretFile(dataUrlInner);
+                                downloadFile(dataUrlInner, (downloadResult) => {
+                                    setLoading(false);
+                                    setShowWatermark(false);
+                                    if (downloadResult === 'ERROR') {
+                                        alert('Downloading Failed. Please try again.')
+                                    } else {
+                                        shareFile(downloadResult);
+                                    }
+                                });
                             });
-                    }, 1000);
+                    }, 2000);
                 } else {
-                    // simulateDownload(dataUrl);
-                    writeSecretFile(dataUrl);
+                    downloadFile(dataUrl, (downloadResult) => {
+                        setLoading(false);
+                        setShowWatermark(false);
+                        if (downloadResult === 'ERROR') {
+                            alert('Downloading Failed. Please try again.')
+                        } else {
+                            shareFile(downloadResult);
+                        }
+                    });
                 }
             });
     }
 
-    const simulateDownload = (dataUrl) => {
-        var link = document.createElement('a');
-        link.download = new Date().getTime() + '.jpeg';
-        link.href = dataUrl;
-        link.click();
-
-    }
-
-    const writeSecretFile = async (dataUrl) => {
-
+    const downloadFile = async (dataUrl, callback) => {
         try {
-            let fileName = new Date().getTime() + '.png'
-            let x = await Filesystem.writeFile({
+            let fileName = new Date().getTime() + '.png';
+            let savedFile = await Filesystem.writeFile({
                 path: fileName,
                 data: dataUrl,
-                directory: FilesystemDirectory.Documents,
-                //   encoding: Encoding.UTF8,
+                directory: FilesystemDirectory.Documents
             });
-            setLoading(false);
-            setShowWatermark(false);
-
-            // let y = await Filesystem.getUri({
-            //     directory: FilesystemDirectory.Documents,
-            //     path: fileName
-            // })
-
-            // const contents = await Filesystem.readFile({
-            //     path: fileName,
-            //     directory: FilesystemDirectory.Documents,
-            // });
-
-            // console.log('secrets:', contents);
-
-            // const base64url = dataUrl
-            // const blob = await (await fetch(base64url)).blob();
-            // const file = new File([blob], fileName, { type: 'image/png' });
-
-            // const canShare = navigator.canShare(file);
-
-            // alert(canShare);
-            // navigator.share({
-            //     title: 'deedd',
-            //   files: [file],
-            //   text: 'dfdfs'
-            // })
-
-            var options = {
-                message: 'share this', // not supported on some apps (Facebook, Instagram)
-                subject: 'the subject', // fi. for email
-                files: [x.uri], // an array of filenames either locally or remotely
-                url: 'https://www.website.com/foo/#bar?a=b',
-                chooserTitle: 'Pick an app', // Android only, you can override the default share sheet title
-                // appPackageName: 'com.apple.social.facebook', // Android only, you can provide id of the App you want to share with
-                iPadCoordinates: '0,0,0,0' //IOS only iPadCoordinates for where the popover should be point.  Format with x,y,width,height
-              };
-            window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
-
-            var onSuccess = function(result) {
-                console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
-                console.log("Shared to app: " + result.app); // On Android result.app since plugin version 5.4.0 this is no longer empty. On iOS it's empty when sharing is cancelled (result.completed=false)
-              };
-              
-              var onError = function(msg) {
-                console.log("Sharing failed with message: " + msg);
-              };
-
-
-
-            // try {
-            //     await Share.share({
-            //         url: x.uri
-            //     });
-            // } catch (error) {
-            //     alert('Error while sharing')
-            // }
-
-
-
-        } catch (error) {
-            setLoading(false);
-            setShowWatermark(false);
-            console.log('error :>> ', error);
-            alert('Could not save the file. Please try again or check your Storage Permissions for this app.')
+            console.log('savedFile.uri :>> ', savedFile.uri);
+            return callback(savedFile.uri);
+        } catch (e) {
+            return 'ERROR'
         }
-    };
+        // if (downloadedFileName !== null) {
+        //     let downloadedFile = await Filesystem.getUri({
+        //         directory: FilesystemDirectory.Documents,
+        //         path: downloadedFileName
+        //     })
+        //     callback(downloadedFile.uri);
+        // } else {
 
-
-    function base64toBlob(base64Data, contentType) {
-        contentType = contentType || '';
-        var sliceSize = 1024;
-        var byteCharacters = atob(base64Data);
-        var bytesLength = byteCharacters.length;
-        var slicesCount = Math.ceil(bytesLength / sliceSize);
-        var byteArrays = new Array(slicesCount);
-
-        for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
-            var begin = sliceIndex * sliceSize;
-            var end = Math.min(begin + sliceSize, bytesLength);
-
-            var bytes = new Array(end - begin);
-            for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
-                bytes[i] = byteCharacters[offset].charCodeAt(0);
-            }
-            byteArrays[sliceIndex] = new Uint8Array(bytes);
-        }
-        return new Blob(byteArrays, { type: contentType });
+        // }
     }
 
+    const shareFile = (uri) => {
+        var options = {
+            message: '', // not supported on some apps (Facebook, Instagram)
+            subject: '', // fi. for email
+            files: [uri], // an array of filenames either locally or remotely
+            url: '',
+            chooserTitle: 'Pick an app', // Android only, you can override the default share sheet title
+            // appPackageName: 'com.apple.social.facebook', // Android only, you can provide id of the App you want to share with
+            iPadCoordinates: '0,0,0,0' //IOS only iPadCoordinates for where the popover should be point.  Format with x,y,width,height
+        };
+        window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+
+        var onSuccess = function (result) {
+            console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+            console.log("Shared to app: " + result.app); // On Android result.app since plugin version 5.4.0 this is no longer empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+        };
+
+        var onError = function (msg) {
+            alert("Sharing failed with message: " + msg);
+        };
+    }
 
     const goToCreateAd = () => {
         history.push('/')

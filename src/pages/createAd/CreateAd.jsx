@@ -9,7 +9,7 @@ import { PITCH_DEFAULT } from '../../configs/constants';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
-import { eligibleToShowChromeTip, getAverageRGB } from '../../utility'
+import { eligibleToShowChromeTip, getAverageRGB, toDataUrl } from '../../utility'
 
 //Components
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
@@ -84,10 +84,12 @@ const CreateAd = () => {
             };
             reader.readAsDataURL(file);
         } else {
-            setFieldValue('productImage', file.urls.regular);
-            globalContext.setselectedThemeColor(file.color);
-            localStorage.setItem('selectedThemeColor', file.color);
-            globalContext.setSelectedUnsplashPhoto(file);
+            toDataUrl(file.urls.regular, (base64Str) => {
+                setFieldValue('productImage', base64Str);
+                globalContext.setselectedThemeColor(file.color);
+                localStorage.setItem('selectedThemeColor', file.color);
+                globalContext.setSelectedUnsplashPhoto(file);
+            })
         }
 
     };
