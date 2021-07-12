@@ -9,11 +9,10 @@ import { PITCH_DEFAULT } from '../../configs/constants';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
-import { eligibleToShowChromeTip, getAverageRGB, toDataUrl } from '../../utility'
+import { getAverageRGB, toDataUrl } from '../../utility'
 
 //Components
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
-import TipCard from '../../components/tipCard/TipCard';
 
 // Assets
 import logo from '../../assets/images/logo.svg';
@@ -23,7 +22,6 @@ const CreateAd = () => {
     const [safeToShowForm, setSafeToShowForm] = useState(false);
     const [showControls, setShowControls] = useState(false);
     const [shakeThat, setShakeThat] = useState(false);
-    const [showChromeTip, setshowChromeTip] = useState(false);
     const [productData, setProductData] = useState({
         productImage: "",
         productName: "",
@@ -36,7 +34,6 @@ const CreateAd = () => {
     });
     let history = useHistory();
     const ref = useRef(null);
-    const tipText = "For best experience, open app in Chrome browser";
 
     useEffect(() => {
         let data = globalContext.productData;
@@ -61,7 +58,6 @@ const CreateAd = () => {
             setShowControls(true);
         }, 200);
 
-        setshowChromeTip(eligibleToShowChromeTip());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -103,11 +99,6 @@ const CreateAd = () => {
         }
     }
 
-    const handleClose = () => {
-        localStorage.setItem('hideChromeTip', true);
-        setshowChromeTip(false);
-    }
-
     const resetFormCustom = (setFieldValue) => {
         setFieldValue('productImage', '');
         setFieldValue('productName', '');
@@ -120,8 +111,6 @@ const CreateAd = () => {
     }
 
     return (<div className="createAd p-3" style={{ backgroundColor: globalContext.selectedThemeColor }}>
-
-        {showChromeTip && <TipCard tipText={tipText} handleClose={handleClose} />}
 
         {safeToShowForm && <Formik
             innerRef={ref}
