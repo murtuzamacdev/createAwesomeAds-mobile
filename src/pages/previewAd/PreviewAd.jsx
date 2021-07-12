@@ -147,11 +147,15 @@ const PreviewAd = () => {
                             });
                     }, 2000);
                 } else {
-                    downloadFile(dataUrl, (downloadResult) => {
+                    downloadFile(dataUrl, function callback(downloadResult) {
                         setLoading(false);
                         setShowWatermark(false);
                         if (downloadResult.status === 'ERROR') {
                             alert(downloadResult.data);
+                            var permissions = window.cordova.plugins.permissions;
+                            window.cordova.plugins.permissions.requestPermission(permissions.WRITE_EXTERNAL_STORAGE, successCallback, errorCallback);
+                            const successCallback = (status) => { }
+                            const errorCallback = () => { }
                         } else {
                             shareFile(downloadResult.data);
                         }
@@ -168,10 +172,13 @@ const PreviewAd = () => {
                 data: dataUrl,
                 directory: FilesystemDirectory.Documents
             });
-            return callback({status: 'SUCCESS', data: savedFile.uri});
+            return callback({ status: 'SUCCESS', data: savedFile.uri });
         } catch (e) {
-            console.log('download error :>> ', e);
-            callback({status: 'ERROR', data: e});
+            let result = { status: 'ERROR', data: e };
+            if (e.toString().includes('user denied permission request') !== -1) {
+                result.data = 'We need Storage permission in order to download the selected template. Please Allow the storage persmission and try downloading again.'
+            }
+            callback(result);
         }
         // if (downloadedFileName !== null) {
         //     let downloadedFile = await Filesystem.getUri({
