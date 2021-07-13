@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.7b0ab182.chunk.css",
-    "main.js": "/static/js/main.68c315a7.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.f001681f.js",
+    "main.css": "/static/css/main.cfa1ea4c.chunk.css",
+    "main.js": "/static/js/main.1d1d35e1.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.5fd7a28f.js",
     "static/css/2.b9dc8434.chunk.css": "/static/css/2.b9dc8434.chunk.css",
-    "static/js/2.66c5466a.chunk.js": "/static/js/2.66c5466a.chunk.js",
-    "static/js/3.26850323.chunk.js": "/static/js/3.26850323.chunk.js",
-    "static/js/4.87aee3ad.chunk.js": "/static/js/4.87aee3ad.chunk.js",
-    "static/js/5.0976acee.chunk.js": "/static/js/5.0976acee.chunk.js",
+    "static/js/2.efba9789.chunk.js": "/static/js/2.efba9789.chunk.js",
+    "static/js/3.ac50b806.chunk.js": "/static/js/3.ac50b806.chunk.js",
+    "static/js/4.8f2e6b4a.chunk.js": "/static/js/4.8f2e6b4a.chunk.js",
+    "static/js/5.a11b0127.chunk.js": "/static/js/5.a11b0127.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.66c5466a.chunk.js.LICENSE.txt": "/static/js/2.66c5466a.chunk.js.LICENSE.txt",
+    "static/js/2.efba9789.chunk.js.LICENSE.txt": "/static/js/2.efba9789.chunk.js.LICENSE.txt",
     "static/media/1.0eebd22c.svg": "/static/media/1.0eebd22c.svg",
     "static/media/2.c9af8bbe.svg": "/static/media/2.c9af8bbe.svg",
     "static/media/3.d8cf0de3.svg": "/static/media/3.d8cf0de3.svg",
@@ -34,13 +34,24 @@
     "static/media/noRecordsFound.ea168afb.svg": "/static/media/noRecordsFound.ea168afb.svg",
     "static/media/prevNextBtn.e9becf66.svg": "/static/media/prevNextBtn.e9becf66.svg",
     "static/media/SelectImageModal.scss": "/static/media/searchBtn.bd117f48.svg",
-    "static/media/topRightLines.6d8648c9.svg": "/static/media/topRightLines.6d8648c9.svg"
+    "static/media/step1_tuto_image.0656dd71.svg": "/static/media/step1_tuto_image.0656dd71.svg",
+    "static/media/step2_tuto.8e2487b0.mov": "/static/media/step2_tuto.8e2487b0.mov",
+    "static/media/step3_tuto.3a609d50.mov": "/static/media/step3_tuto.3a609d50.mov",
+    "static/media/topRightLines.6d8648c9.svg": "/static/media/topRightLines.6d8648c9.svg",
+    "static/media/w_temp1.fea8a6f6.svg": "/static/media/w_temp1.fea8a6f6.svg",
+    "static/media/w_temp2.a3dc431b.svg": "/static/media/w_temp2.a3dc431b.svg",
+    "static/media/w_temp3.38d7e407.svg": "/static/media/w_temp3.38d7e407.svg",
+    "static/media/w_temp5.18a748bd.svg": "/static/media/w_temp5.18a748bd.svg",
+    "static/media/w_temp6.e3f2f01d.svg": "/static/media/w_temp6.e3f2f01d.svg",
+    "static/media/w_temp7.dd4b4d05.svg": "/static/media/w_temp7.dd4b4d05.svg",
+    "static/media/w_temp8.4115711d.svg": "/static/media/w_temp8.4115711d.svg",
+    "static/media/welcome_text.c2fee82f.svg": "/static/media/welcome_text.c2fee82f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f001681f.js",
+    "static/js/runtime-main.5fd7a28f.js",
     "static/css/2.b9dc8434.chunk.css",
-    "static/js/2.66c5466a.chunk.js",
-    "static/css/main.7b0ab182.chunk.css",
-    "static/js/main.68c315a7.chunk.js"
+    "static/js/2.efba9789.chunk.js",
+    "static/css/main.cfa1ea4c.chunk.css",
+    "static/js/main.1d1d35e1.chunk.js"
   ]
 }

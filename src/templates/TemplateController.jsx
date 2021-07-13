@@ -39,6 +39,7 @@ export const TEMPLATES = {
         demoImage: template3Img,
         status: 'ACTIVE',
         colorPreference: -1,
+        colorTone: 50,
         defaultColor: '#16E1B0'
     },
     template1: {
@@ -47,6 +48,7 @@ export const TEMPLATES = {
         demoImage: template1Img,
         status: 'ACTIVE',
         colorPreference: -1,
+        colorTone: 50,
         defaultColor: '#3F5CA9'
     },
     template5: {
@@ -63,6 +65,7 @@ export const TEMPLATES = {
         demoImage: template6Img,
         status: 'ACTIVE',
         colorPreference: 1,
+        colorTone: 50,
         defaultColor: '#FF7A00'
     },
     template7: {

@@ -10,13 +10,16 @@ export const GlobalContextProvider = (props) => {
     const [unsplashCachedSearchResult, setUnsplashCachedSearchResult] = useState([]);
     const [selectedSize, setselectedSize] = useState(AVAILALBE_SIZES.WHATSAPP_STATUS.id);
     const [selectedThemeColor, setselectedThemeColor] = useState(process.env.REACT_APP_ENV === "dev" ? "#0288d1" : "#e57373");
+    const [hideIntro, sethideIntro] = useState(true);
 
     useEffect(() => {
         let _selectedTemplate = localStorage.getItem('selectedTemplate');
         let _selectedSize = localStorage.getItem('selectedSize');
+        let _hideIntro = localStorage.getItem('hideIntro');
 
         _selectedTemplate && setSelectedTemplate(_selectedTemplate);
         _selectedSize && setselectedSize(_selectedSize);
+        !_hideIntro && sethideIntro(false);
     }, [])
 
     const _setProductData = (productData) => {
@@ -39,13 +42,14 @@ export const GlobalContextProvider = (props) => {
     return (
         <GlobalContext.Provider
             value={{
-                productData, selectedTemplate, selectedUnsplashPhoto, unsplashCachedSearchResult, selectedSize, selectedThemeColor,
+                productData, selectedTemplate, selectedUnsplashPhoto, unsplashCachedSearchResult, selectedSize, selectedThemeColor,hideIntro,
                 setProductData: _setProductData,
                 setSelectedTemplate: _setSelectedTemplate,
                 setSelectedUnsplashPhoto: setSelectedUnsplashPhoto,
                 setUnsplashCachedSearchResult: setUnsplashCachedSearchResult,
                 setselectedSize: _setselectedSize,
-                setselectedThemeColor: setselectedThemeColor
+                setselectedThemeColor: setselectedThemeColor,
+                sethideIntro: sethideIntro
             }}
         >
             {props.children}
