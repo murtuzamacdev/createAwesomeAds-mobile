@@ -83,7 +83,9 @@ const PreviewAd = () => {
             let rgbColorStr = hexToRgbA(selectedThemeColor, 1);
             let finalColor;
 
-            if (lightOrDark(rgbColorStr) !== selectedTemplateObj.colorPreference) {
+            if (selectedTemplateObj.colorPreference === 0) {
+                finalColor = selectedThemeColor;
+            } else if (lightOrDark(rgbColorStr) !== selectedTemplateObj.colorPreference) {
                 finalColor = changeColorTone(selectedThemeColor, selectedTemplateObj.colorPreference * selectedTemplateObj.colorTone)
             } else {
                 finalColor = selectedThemeColor;
