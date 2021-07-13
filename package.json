@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "capacitor-resources": "^2.0.5",
     "cordova-plugin-android-permissions": "^1.1.2",
     "cordova-plugin-x-socialsharing": "^6.0.3",
     "dom-to-image": "^2.6.0",
@@ -45,7 +46,8 @@
     "start-prod": "env-cmd -f .env.prod react-scripts start",
     "build-prod": "env-cmd -f .env.prod react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "resources": "capacitor-resources -p android,ios"
   },
   "eslintConfig": {
     "extends": [
