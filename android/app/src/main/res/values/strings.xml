@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">createawesomeads</string>
-    <string name="title_activity_main">createawesomeads</string>
+    <string name="app_name">Create Awesome Ads</string>
+    <string name="title_activity_main">Create Awesome Ads</string>
     <string name="package_name">io.ionic.createawesomeads</string>
     <string name="custom_url_scheme">io.ionic.createawesomeads</string>
 </resources>
