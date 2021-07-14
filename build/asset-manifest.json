@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.cfa1ea4c.chunk.css",
-    "main.js": "/static/js/main.184ea683.chunk.js",
+    "main.js": "/static/js/main.e40402b0.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.5fd7a28f.js",
     "static/css/2.b9dc8434.chunk.css": "/static/css/2.b9dc8434.chunk.css",
-    "static/js/2.efba9789.chunk.js": "/static/js/2.efba9789.chunk.js",
+    "static/js/2.6c710f04.chunk.js": "/static/js/2.6c710f04.chunk.js",
     "static/js/3.ac50b806.chunk.js": "/static/js/3.ac50b806.chunk.js",
     "static/js/4.8f2e6b4a.chunk.js": "/static/js/4.8f2e6b4a.chunk.js",
     "static/js/5.a11b0127.chunk.js": "/static/js/5.a11b0127.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.efba9789.chunk.js.LICENSE.txt": "/static/js/2.efba9789.chunk.js.LICENSE.txt",
+    "static/js/2.6c710f04.chunk.js.LICENSE.txt": "/static/js/2.6c710f04.chunk.js.LICENSE.txt",
     "static/media/flag-icon.css": "/static/media/zw.f4d026d6.svg",
     "static/media/backdrop.c2691cde.svg": "/static/media/backdrop.c2691cde.svg",
     "static/media/browseDevice.2c8f7d6e.svg": "/static/media/browseDevice.2c8f7d6e.svg",
@@ -42,8 +42,8 @@
   "entrypoints": [
     "static/js/runtime-main.5fd7a28f.js",
     "static/css/2.b9dc8434.chunk.css",
-    "static/js/2.efba9789.chunk.js",
+    "static/js/2.6c710f04.chunk.js",
     "static/css/main.cfa1ea4c.chunk.css",
-    "static/js/main.184ea683.chunk.js"
+    "static/js/main.e40402b0.chunk.js"
   ]
 }
