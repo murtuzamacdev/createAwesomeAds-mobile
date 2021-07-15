@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="container p-0">
       <GlobalContextProvider>
-      <Router>
+        <Router>
           <InitialOperations />
           <GlobalContext.Consumer>
             {globalContext => (
@@ -29,7 +29,7 @@ function App() {
                 }
                 {
                   globalContext.hideIntro === false && <Route exact path="/">
-                    <Intro/>
+                    <Intro />
                   </Route>
                 }
 
