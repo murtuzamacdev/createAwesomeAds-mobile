@@ -178,7 +178,7 @@ const CreateAd = () => {
                                 <img id="productImageForRGB" src={values.productImage} alt="productImage" />
                                 <div className="d-flex justify-content-center change-image">
                                     <label className="btn btn-default buttons-ctrns p-0 w-auto">
-                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" className="upload-button pl-5 pr-5 image-select-button">Change Image</div>
+                                        <button type="button" data-toggle="modal" data-target="#selectImageModal" className="upload-button pl-5 pr-5 image-select-button">Change Image</button>
                                     </label>
                                 </div>
                             </div>
