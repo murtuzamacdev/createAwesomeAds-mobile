@@ -15,7 +15,7 @@ export const AVAILALBE_SIZES = {
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
             let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
-            let calculatedHeight = deviceWidth * (1280 / 764);
+            let calculatedHeight = deviceWidth * (6 / 4);
             if (calculatedHeight > deviceHeight) {
                 return deviceHeight;
             } else {
