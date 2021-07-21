@@ -24,14 +24,16 @@ export const TEMPLATES = {
         // demoImage: template4Img,
         status: 'ACTIVE',
         colorPreference: 0,
-        
+
     },
-    template2: {
-        id: 'template2',
-        component: Template2,
-        // demoImage: template2Img,
+    template6: {
+        id: 'template6',
+        component: Template6,
+        // demoImage: template6Img,
         status: 'ACTIVE',
-        colorPreference: 0
+        colorPreference: 1,
+        colorTone: 50,
+        defaultColor: '#FF7A00'
     },
     template3: {
         id: 'template3',
@@ -42,15 +44,6 @@ export const TEMPLATES = {
         colorTone: 50,
         defaultColor: '#16E1B0'
     },
-    template1: {
-        id: 'template1',
-        component: Template1,
-        // demoImage: template1Img,
-        status: 'ACTIVE',
-        colorPreference: -1,
-        colorTone: 50,
-        defaultColor: '#3F5CA9'
-    },
     template5: {
         id: 'template5',
         component: Template5,
@@ -59,14 +52,21 @@ export const TEMPLATES = {
         colorPreference: 0,
         defaultColor: '#0288d1'
     },
-    template6: {
-        id: 'template6',
-        component: Template6,
-        // demoImage: template6Img,
+    template2: {
+        id: 'template2',
+        component: Template2,
+        // demoImage: template2Img,
         status: 'ACTIVE',
-        colorPreference: 1,
+        colorPreference: 0
+    },
+    template1: {
+        id: 'template1',
+        component: Template1,
+        // demoImage: template1Img,
+        status: 'ACTIVE',
+        colorPreference: -1,
         colorTone: 50,
-        defaultColor: '#FF7A00'
+        defaultColor: '#3F5CA9'
     },
     template7: {
         id: 'template7',
