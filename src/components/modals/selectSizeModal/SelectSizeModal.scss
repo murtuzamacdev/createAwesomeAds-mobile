@@ -1,0 +1,52 @@
+@media (max-width: 476px) {
+  .select-size-modal-ctrn {
+    .modal-dialog {
+      margin: 0;
+    }
+  }
+}
+
+.select-size-modal-ctrn {
+  .modal-header {
+    border: 0;
+  }
+
+  .modal-content {
+    background-color: white;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    padding: 0;
+    overflow-y: scroll;
+
+    .title {
+        color: white;
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+    
+      .btns-ctrn {
+        width: 100%;
+    
+        .size-tile {
+          border-radius: 3px;
+          margin: 5px;
+          font-size: 0.7rem;
+          color: rgba(0, 0, 0, 0.45);
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          text-align: center;
+          flex-direction: column;
+    
+          img {
+            height: 0.9rem;
+            width: 0.9rem;
+          }
+        }
+      }
+  }
+
+  
+}

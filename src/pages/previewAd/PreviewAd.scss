@@ -57,7 +57,7 @@
     z-index: 2;
   }
 
-  input {
+  input.prev-btn, input.next-btn {
     position: absolute;
     transition: visibility 0s linear 0s, opacity 300ms;
     outline: none;
@@ -65,8 +65,8 @@
 
   .fadeOut {
     opacity: 0;
-    width: 0;
-    height: 0;
+    // width: 0;
+    // height: 0;
     transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
   }
   .fadeIn {
@@ -83,7 +83,7 @@
 
   .unsplash-attr-ctrn {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     z-index: 1;
     color: white;
@@ -94,7 +94,7 @@
     div {
       background-color: transparent;
       display: inline-block;
-      font-size: 0.7rem;
+      font-size: 0.55rem;
       background-color: #3e3d3d;
     }
 
@@ -115,17 +115,18 @@
     opacity: 0.7;
   }
 
-  .size-select-wrapper {
+  .tabs-wrapper {
     position: absolute;
-    top: 0;
+    bottom: 0;
     width: 100%;
     z-index: 3;
+    border-top: 1px solid #d3d0d0;
   }
 }
 
 @media (max-width: 476px) {
   .preview-ad-ctnr {
-    input {
+    input.prev-btn, input.next-btn {
       position: fixed;
     }
   }

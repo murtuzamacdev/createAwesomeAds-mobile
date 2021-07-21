@@ -1,0 +1,22 @@
+.tabs-ctrn {
+  .btns-ctrn {
+    width: 100%;
+
+    .size-tile {
+      border-radius: 0px;
+      background-color: white;
+      font-size: 0.75rem;
+      color: #0c82d7b6;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+
+      img {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+  }
+}

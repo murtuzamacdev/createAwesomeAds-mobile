@@ -8,16 +8,12 @@ import { createApi } from 'unsplash-js';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
-import { changeColorTone, hexToRgbA, lightOrDark, getOS } from '../../utility';
+import { changeColorTone, hexToRgbA, lightOrDark, getOS, getAverageRGB } from '../../utility';
 import { useSwipeable } from 'react-swipeable';
 import { Filesystem, FilesystemDirectory } from '@capacitor/filesystem';
 
 
 //assets
-import downloadBtn from '../../assets/images/downloadBtn.svg';
-import editBtn from '../../assets/images/editBtn.svg';
-// import changeTemplateBtn from '../../assets/images/changeTempBtn.svg';
-import changeColor from '../../assets/images/changeColor.svg';
 import prevNextBtn from '../../assets/images/prevNextBtn.svg';
 
 // Templates
@@ -27,7 +23,9 @@ import { TEMPLATES } from '../../templates/TemplateController';
 import Loading from '../../components/loading/Loading';
 import TemplateSelectionModal from '../../components/modals/templateSelection/TemplateSelectionModal';
 import SelectColorModal from '../../components/modals/selectColorModal/SelectColorModal';
-import SizeSelector from '../../components/sizeSelector/SizeSelector';
+import SelectSizeModal from '../../components/modals/selectSizeModal/SelectSizeModal';
+import PreviewTabs from '../../components/prievewTabs/PreviewTabs';
+import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
 
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -274,6 +272,43 @@ const PreviewAd = () => {
         ...swipeConfig,
     });
 
+    const updatePicture = (file, setFieldValue, source) => {
+        if (source !== 'FROM_INTERNET') {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                globalContext.setSelectedUnsplashPhoto(null);
+                globalContext.setProductData({ ...globalContext.productData, productImage: event.target.result });
+
+                // Set background color based on the image selected
+                const img = document.createElement("img");
+                img.src = event.target.result;
+                setTimeout(() => {
+                    let imageColorHex = getAverageRGB(img);
+                    globalContext.setselectedThemeColor(imageColorHex);
+                    localStorage.setItem('selectedThemeColor', imageColorHex);
+                }, 100);
+
+            };
+            reader.readAsDataURL(file);
+        } else {
+            globalContext.setselectedThemeColor(file.color);
+            localStorage.setItem('selectedThemeColor', file.color);
+            globalContext.setSelectedUnsplashPhoto(file);
+            globalContext.setProductData({ ...globalContext.productData, productImage: file.urls.regular });
+        }
+        setTimeout(() => {
+            setShowControls(false);
+        }, 200);
+    };
+
+    const handleSizeChange = (sizeId) => {
+        window.$('#selectSizeModal').modal('hide');
+        globalContext.setselectedSize(sizeId);
+        setTimeout(() => {
+            setShowControls(false);
+        }, 200);
+    }
+
     return (
         <div id="preview-ad-ctrn-id" {...swipeHandlers} onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
             {loading && <Loading fullScreen={true}></Loading>}
@@ -282,15 +317,6 @@ const PreviewAd = () => {
                     <small className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')}>made with createAwesomeAds.com</small>
                     {getSelectedTemplateComponent()}
                 </div>
-
-                <input type="image" className={"edit-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Edit Button"
-                    src={editBtn} onClick={goToCreateAd}></input>
-                <input type="image" className={"download-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Download Button"
-                    src={downloadBtn} onClick={downloadScreenshot}></input>
-                {/* <input type="image" className={"change-temp-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Template Button"
-                    src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input> */}
-                <input type="image" className={"change-color-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Color Button"
-                    src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
 
                 {/* Previous Next btn */}
                 <input type="image" className={"prev-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Previous"
@@ -303,9 +329,19 @@ const PreviewAd = () => {
                     <div>Photo by <a rel="noreferrer" target="_blank" href={`https://unsplash.com/@${globalContext.selectedUnsplashPhoto.user.username}?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>{globalContext.selectedUnsplashPhoto.user.name}</a> on <a target="_blank" rel="noreferrer" href={`https://unsplash.com/?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>Unsplash</a></div>
                 </div>}
 
-                <div className={"size-select-wrapper " + (showControls ? 'fadeIn' : 'fadeOut')}><SizeSelector /></div>
+                <div className={"tabs-wrapper " + (showControls ? 'fadeIn' : 'fadeOut')}>
+                    <PreviewTabs
+                        handleBgTap={() => { window.$('#selectImageModal').modal('show'); }}
+                        handleTextTap={() => { goToCreateAd() }}
+                        handleColorTap={() => { window.$('#selectColorModal').modal('show') }}
+                        handleSizeTap={() => { window.$('#selectSizeModal').modal('show') }}
+                        handleDownloadtap={() => { downloadScreenshot() }}
+                    />
+                </div>
+                <SelectImageModal updatePicture={updatePicture} setFieldValue={null} />
                 <TemplateSelectionModal handleTemplateChange={handleTemplateChange} />
                 <SelectColorModal handleColorChange={handleColorChange} />
+                <SelectSizeModal handleSizeChange={handleSizeChange} />
             </>}
         </div>);
 }
